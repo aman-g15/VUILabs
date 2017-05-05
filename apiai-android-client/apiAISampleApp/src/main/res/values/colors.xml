@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="view_alpha_background">#4Db4b4b4</color>
+    <color name="divider_color">#cfcfcf</color>
+    <color name="reqTextView_color">#9B59B6</color>
+    <color name="resTextView_color">#F7F9F9</color>
+</resources>

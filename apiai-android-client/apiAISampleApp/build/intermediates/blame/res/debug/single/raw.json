@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/raw/test_cancel.wav",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/raw/test_cancel.wav"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/raw/version_config.json",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/apiai-android-client/ailib/unspecified/res/raw/version_config.json"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/raw/test_start.wav",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/raw/test_start.wav"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/raw/test_stop.mp3",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/raw/test_stop.mp3"
+    }
+]

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/amangupta/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.2/d7ef6ad7ff0711dd12fe409d62d72d6ed14516e0/log4j-api-2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="d7ef6ad7ff0711dd12fe409d62d72d6ed14516e0">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/log4j-api-2.2_6e55be3c51bae9606af15590a465a0e8cf86af6a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/amangupta/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/gson-2.3.1_a346faa1f09dbf0970cb4186b35140defd46b520.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/amangupta/.gradle/caches/modules-2/files-2.1/ai.api/libai/1.4.8/1386bf51c371e40bf1dc04920b04bd937c04e8ba/libai-1.4.8.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="1386bf51c371e40bf1dc04920b04bd937c04e8ba">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/libai-1.4.8_310b7023f46cd09d7f8eaf10857e3f9fd4290984.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/libs/internal_impl-23.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/internal_impl-23.2.1_6efd7b2754717113f7e2c6357b7c2603197be4bb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.2.1_745ebbcb697a9e30917e28f2a6f6efd662d4d814.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/apiai-android-client/ailib/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="619b4634855bbf34c4fcd6be8b18b02e788ef4eb">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/apiai-android-client-ailib-unspecified_0c9030136610c6e48fba44c4009f00d0861d79ab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/amangupta/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.1/support-annotations-23.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/support-annotations-23.2.1_aa3b25155210e97191572778cb1f74c468e2a506.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/Android Studio.app/Contents/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/commons-io-2.4_db9d9c7f5dc9abc44c05f9a56b43532b2a4af315.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.2.1_06b3f2e7ab5964de3f6c8e0884ec74b69bc2aba8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/amangupta/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.2/c707664e020218f8529b9a5e55016ee15f0f82ac/log4j-core-2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="c707664e020218f8529b9a5e55016ee15f0f82ac">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/log4j-core-2.2_f01a42a88dac7ced7737774dd15ba3d01a56c5fc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="673d77a5bbddd766037f088e775df525c46407f0">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.2.1_8c3f80679642a89bffe21538fa340fcab1c7d25a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="21.0.1"
+        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
+        <dex dex="/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.2.1_ed480fc3bc513964452cc4930b18c9a8eaa62fac.jar" />
+    </item>
+
+</items>

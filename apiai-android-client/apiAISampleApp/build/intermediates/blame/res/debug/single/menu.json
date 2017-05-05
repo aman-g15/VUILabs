@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/menu/menu_aiservice_sample.xml",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/menu/menu_aiservice_sample.xml"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/menu/menu_aibutton_sample.xml",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/menu/menu_aibutton_sample.xml"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/menu/main.xml"
+    }
+]

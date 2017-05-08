@@ -44,7 +44,7 @@ public class TTS {
                 public void onInit(int i) {
 
                 }
-            },"networkTts");
+            });
         }
     }
 
@@ -54,20 +54,20 @@ public class TTS {
     }
     public static void speak(final String text) {
 
-            Set<Voice> voices = textToSpeech.getVoices();
-            Voice voice = null;
+//            Set<Voice> voices = textToSpeech.getVoices();
+//            Voice voice = null;
 
-            voice = new Voice("en_GB-locale-default", Locale.ENGLISH, 900, 100, true, null);
+            //voice = new Voice("en_GB-locale-default", Locale.ENGLISH, 900, 100, true, null);
 
             //Log.i("Voice is: ", v1.toString());
 
-            textToSpeech.setVoice(voice);
+            //textToSpeech.setVoice(voice);
             //textToSpeech.setLanguage(Locale.ENGLISH);
             //Voice v = new Voice("en_US-locale", Locale.ENGLISH,500, 400, true,null);
             // textToSpeech.setVoice(v);
-            int res = textToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null,"1");
+            //int res = textToSpeech.speak(text,TextToSpeech.QUEUE_FLUSH,null,"1");
             //aiButton.onClick();
-            //textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
 
     }
 

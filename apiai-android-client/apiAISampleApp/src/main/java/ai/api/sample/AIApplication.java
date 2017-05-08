@@ -38,6 +38,9 @@ public class AIApplication extends Application {
         super.onCreate();
         bluetoothController = new BluetoothControllerImpl(this);
         settingsManager = new SettingsManager(this);
+        TTS.init(getApplicationContext());
+        TTS.speak("Hi! I am Molly, your personal assistant for real estate practice. How can I help you?");
+
     }
 
     public BluetoothController getBluetoothController() {

@@ -1,11 +1,35 @@
 [
     {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly7.gif",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly7.gif"
+    },
+    {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background_dark.xml",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_dialog_material_background_dark.xml"
     },
     {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly4.png",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly4.png"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly_background.jpg",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly_background.jpg"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly_background2.jpg",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly_background2.jpg"
+    },
+    {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly_anim.xml",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly_anim.xml"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly1.png",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly1.png"
     },
     {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_text_cursor_material.xml",
@@ -14,6 +38,10 @@
     {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background_light.xml",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_dialog_material_background_light.xml"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly3.png",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly3.png"
     },
     {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",
@@ -34,6 +62,10 @@
     {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly10.png",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly10.png"
     },
     {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
@@ -64,12 +96,20 @@
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_ratingbar_small_material.xml"
     },
     {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly8.png",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly8.png"
+    },
+    {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/rectangle_background.png",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/rectangle_background.png"
     },
     {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly6.gif",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly6.gif"
     },
     {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
@@ -92,6 +132,10 @@
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_cab_background_top_material.xml"
     },
     {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly9.png",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly9.png"
+    },
+    {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_seekbar_track_material.xml"
     },
@@ -100,12 +144,24 @@
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly11.png",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly11.png"
+    },
+    {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/mic_control.xml",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/apiai-android-client/ailib/unspecified/res/drawable/mic_control.xml"
     },
     {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/view_alpha_selector.xml",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/view_alpha_selector.xml"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly2.png",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly2.png"
+    },
+    {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly5.png",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/drawable/molly5.png"
     },
     {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/drawable/molly.png",

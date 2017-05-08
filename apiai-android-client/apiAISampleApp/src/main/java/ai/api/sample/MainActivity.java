@@ -23,8 +23,11 @@ package ai.api.sample;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.provider.AlarmClock;
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +37,8 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +50,9 @@ import ai.api.model.Metadata;
 import ai.api.model.Result;
 import ai.api.model.Status;
 import ai.api.ui.AIButton;
+
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends BaseActivity implements AIButton.AIButtonListener{
@@ -55,10 +63,17 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
     private TextView resultTextView;
     private Gson gson = GsonFactory.getGson();
     private AudioManager audioManager;
+    private ImageView animImageView;
+    private AnimationDrawable frameAnimation;
+    int minute, hour, day;
+    Calendar cal;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.relative_background);
+        //relativeLayout.setBackgroundResource(R.drawable.molly_background2);
 
         aiButton = (AIButton) findViewById(R.id.micButton);
         //resultTextView = (TextView) findViewById(R.id.resultTextView);
@@ -72,7 +87,19 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
         aiButton.initialize(config);
         aiButton.setResultsListener(this);
         audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        animImageView = (ImageView) findViewById(R.id.imageView);
+        animImageView.setBackgroundResource(R.drawable.molly_anim);
+        animImageView.post(new Runnable() {
+            @Override
+            public void run() {
+                frameAnimation =
+                        (AnimationDrawable) animImageView.getBackground();
+                frameAnimation.start();
+            }
+        });
         TTS.init(getApplicationContext());
+        TTS.speak("Hi! I am Molly, your personal assistant for real estate practice. How can I help you?");
+
     }
 
     @Override
@@ -80,6 +107,7 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
         super.onStart();
 
         checkAudioRecordPermission();
+        TTS.speak("Hi! I am Molly, your personal assistant for real estate practice. How can I help you?");
     }
 
     @Override
@@ -169,6 +197,10 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
                     final String speech = result.getFulfillment().getSpeech();
                     Log.i(TAG, "Speech: " + speech);
                     TTS.speak(speech,aiButton);
+                if(speech.contains("reminder") || speech.contains("remind")){
+                    createCalendarEvent();
+                    //setAlarm();
+                }
                     //aiButton.onClick();
                     final Metadata metadata = result.getMetadata();
                     if (metadata != null) {
@@ -189,7 +221,27 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
 
         });
        // aiButton.onClick();
-        startActivity(AIButtonSampleActivity.class);
+       // startActivity(AIButtonSampleActivity.class);
+
+    }
+    public synchronized void createCalendarEvent(){
+
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2017, 4, 6, 10, 15);
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2017, 4, 6, 10, 30);
+        Intent intent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                .putExtra(CalendarContract.Events.TITLE, "Reminder")
+                .putExtra(CalendarContract.Events.DESCRIPTION, "Group class")
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, "The gym")
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
+                .putExtra(Intent.EXTRA_EMAIL, "15.amangupta@gmail.com");
+        startActivity(intent);
+
+
 
     }
     public void onDestroy(){
@@ -199,5 +251,18 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
     public void onBackPressed(){
         //super.onBackPressed();
         System.exit(0);
+    }
+    public synchronized void setAlarm(){
+        cal = new GregorianCalendar();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        day = cal.get(Calendar.DAY_OF_WEEK);
+        hour = cal.get(Calendar.HOUR_OF_DAY);
+        minute = cal.get(Calendar.MINUTE);
+
+        Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+        i.putExtra(AlarmClock.EXTRA_HOUR, hour +1);
+        i.putExtra(AlarmClock.EXTRA_MINUTES, minute + 5);
+        i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
+        startActivity(i);
     }
 }

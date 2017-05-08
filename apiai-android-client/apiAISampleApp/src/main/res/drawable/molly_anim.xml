@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+    <item android:drawable="@drawable/molly1" android:duration="1000" />
+    <item android:drawable="@drawable/molly2" android:duration="1000" />
+    <item android:drawable="@drawable/molly3" android:duration="1000" />
+    <item android:drawable="@drawable/molly4" android:duration="1000" />
+    <item android:drawable="@drawable/molly5" android:duration="1000" />
+    <item android:drawable="@drawable/molly7" android:duration="1000" />
+    <item android:drawable="@drawable/molly8" android:duration="1000" />
+    <item android:drawable="@drawable/molly9" android:duration="1000" />
+    <item android:drawable="@drawable/molly10" android:duration="1000" />
+    <item android:drawable="@drawable/molly11" android:duration="1000" />
+    <!--<item android:drawable="@drawable/molly7" android:duration="700" /> -->
+
+</animation-list>

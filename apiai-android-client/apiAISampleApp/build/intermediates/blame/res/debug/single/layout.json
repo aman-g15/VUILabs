@@ -68,6 +68,10 @@
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/layout/abc_popup_menu_item_layout.xml"
     },
     {
+        "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/layout/molly_anim.xml",
+        "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/src/main/res/layout/molly_anim.xml"
+    },
+    {
         "merged": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
         "source": "/Volumes/General/SampleGitRepo/apiai-android-client/apiAISampleApp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/layout/abc_activity_chooser_view.xml"
     },

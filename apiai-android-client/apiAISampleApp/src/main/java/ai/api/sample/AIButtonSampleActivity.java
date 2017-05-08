@@ -22,17 +22,32 @@ package ai.api.sample;
  ***********************************************************************************************************************/
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.AlarmClock;
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 import ai.api.android.AIConfiguration;
 import ai.api.android.GsonFactory;
@@ -43,23 +58,21 @@ import ai.api.model.Result;
 import ai.api.model.Status;
 import ai.api.ui.AIButton;
 import android.view.Window;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.CalendarContract.Calendars;
+import android.content.Context;
 
 public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIButtonListener {
 
     public static final String TAG = AIButtonSampleActivity.class.getName();
-
-    private static final int PROJECTION_ID_INDEX = 0;
-    private static final int PROJECTION_ACCOUNT_NAME_INDEX = 1;
-    private static final int PROJECTION_DISPLAY_NAME_INDEX = 2;
-    private static final int PROJECTION_OWNER_ACCOUNT_INDEX = 3;
+    Button btnSetAlarm;
+    EditText etHour, etMinute;
+    int minute, hour, day;
+    Calendar cal;
 
     private AIButton aiButton;
     private TextView resultTextView;
     private TextView requestTextView;
-
+    private ImageView animImageView;
+    private AnimationDrawable frameAnimation;
 
     private Gson gson = GsonFactory.getGson();
 
@@ -68,49 +81,19 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aibutton_sample);
-        String[] projection = new String[] {
-                Calendars._ID,                           // 0
-                Calendars.ACCOUNT_NAME                  // 1
-
-        };
-
-        Uri uri = Calendars.CONTENT_URI;
-
-        Cursor cur = null;
-        String calName;
-        ContentResolver cr = getContentResolver();
-        String selection = "((" + Calendars.ACCOUNT_NAME + " = ?) AND ("
-                + Calendars.ACCOUNT_TYPE + " = ?))";
-        try {
-            cur = cr.query(uri, projection, selection, null, null);
-        }catch (SecurityException ex){
-            Log.e(AIButtonSampleActivity.class.getName(),"Exception in connecting to Calendar");
-        }
-       /* Log.i("Cursor: ~~~~~" , cur.getColumnName(0));
-        Log.i("Cursor: ~~~~~", String.valueOf(cur.getCount()));
-        long calID = 0;
-        String displayName = null;
-        String accountName = null;
-        calID = cur.getLong(PROJECTION_ID_INDEX);
-        displayName = cur.getString(PROJECTION_DISPLAY_NAME_INDEX);*/
-
-        //accountName = cur.getString(PROJECTION_ACCOUNT_NAME_INDEX);
-      /*  while (cur.moveToNext()) {
-           // long calID = 0;
-
-
-            String ownerName = null;
-
-            // Get the field values
-            calID = cur.getLong(PROJECTION_ID_INDEX);
-            displayName = cur.getString(PROJECTION_DISPLAY_NAME_INDEX);
-
-
-        }*/
-
         requestTextView = (TextView) findViewById(R.id.requeTextView);
         resultTextView = (TextView) findViewById(R.id.resultTextView);
         aiButton = (AIButton) findViewById(R.id.micButton);
+        animImageView = (ImageView) findViewById(R.id.imageView2);
+        animImageView.setBackgroundResource(R.drawable.molly_anim);
+        animImageView.post(new Runnable() {
+            @Override
+            public void run() {
+                frameAnimation =
+                        (AnimationDrawable) animImageView.getBackground();
+                frameAnimation.start();
+            }
+        });
 
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.English,
@@ -165,6 +148,7 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
             public void run() {
                 Log.d(TAG, "onResult");
 
+
               //  resultTextView.setText(gson.toJson(response));
 
                 Log.i(TAG, "Received success response");
@@ -184,12 +168,18 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
                 Log.i(TAG, "Action: " + result.getAction());
                 final String speech = result.getFulfillment().getSpeech();
                 Log.i(TAG, "Speech: " + speech);
+                if(speech.contains("reminder") || speech.contains("remind")){
+                    createCalendarEvent();
+                    setAlarm();
+                }
                 resultTextView.setText("Molly: "+speech);
                 resultTextView.setPadding(1,5,1,5);
                 int colorRes = -65281;
                 resultTextView.setBackgroundResource(R.color.resTextView_color);
                // resultTextView.setBackgroundColor(5993);
                 TTS.speak(speech);
+
+                //frameAnimation.stop();
 
                 final Metadata metadata = result.getMetadata();
                 if (metadata != null) {
@@ -229,5 +219,38 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
                 resultTextView.setText("");
             }
         });
+    }
+    public synchronized void createCalendarEvent(){
+
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2017, 4, 6, 10, 15);
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2017, 4, 6, 10, 30);
+        Intent intent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                .putExtra(CalendarContract.Events.TITLE, "Yoga")
+                .putExtra(CalendarContract.Events.DESCRIPTION, "Group class")
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, "The gym")
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
+                .putExtra(Intent.EXTRA_EMAIL, "15.amangupta@gmail.com");
+        startActivity(intent);
+
+
+
+    }
+    public synchronized void setAlarm(){
+        cal = new GregorianCalendar();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        day = cal.get(Calendar.DAY_OF_WEEK);
+        hour = cal.get(Calendar.HOUR_OF_DAY);
+        minute = cal.get(Calendar.MINUTE);
+
+        Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+        i.putExtra(AlarmClock.EXTRA_HOUR, hour +1);
+        i.putExtra(AlarmClock.EXTRA_MINUTES, minute + 5);
+        i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
+        startActivity(i);
     }
 }

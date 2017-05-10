@@ -21,10 +21,12 @@ package ai.api.sample;
  *
  ***********************************************************************************************************************/
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.provider.CalendarContract;
@@ -41,6 +43,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 import ai.api.android.AIConfiguration;
 import ai.api.android.GsonFactory;
@@ -98,7 +101,7 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
             }
         });
         TTS.init(getApplicationContext());
-        TTS.speak("Hi! I am Molly, your personal assistant for real estate practice. How can I help you?");
+       // TTS.speak("Hi! I am Molly, your personal assistant for real estate practice. How can I help you?");
 
     }
 
@@ -197,8 +200,9 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
                     final String speech = result.getFulfillment().getSpeech();
                     Log.i(TAG, "Speech: " + speech);
                     TTS.speak(speech,aiButton);
-                if(speech.contains("reminder") || speech.contains("remind")){
-                    createCalendarEvent();
+                if(speech.contains("creating reminder")){
+                    //createCalendarEvent();
+                    createCalendar();
                     //setAlarm();
                 }
                     //aiButton.onClick();
@@ -241,7 +245,28 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
                 .putExtra(Intent.EXTRA_EMAIL, "15.amangupta@gmail.com");
         startActivity(intent);
 
+    }
 
+    public synchronized void createCalendar(){
+        Calendar startTimeMillis = Calendar.getInstance();
+        startTimeMillis.set(2017, 4, 10, 20, 15);
+        Calendar endTimeMillis = Calendar.getInstance();
+        endTimeMillis.set(2017, 4, 10, 20, 30);
+        final ContentValues event = new ContentValues();
+        event.put(CalendarContract.Events.CALENDAR_ID, 1);
+        event.put(CalendarContract.Events.TITLE, "Reminder");
+        event.put(CalendarContract.Events.DESCRIPTION, "This is a reminder.");
+        event.put(CalendarContract.Events.EVENT_LOCATION, "");
+        event.put(CalendarContract.Events.DTSTART, startTimeMillis.getTimeInMillis());
+        event.put(CalendarContract.Events.DTEND, endTimeMillis.getTimeInMillis());
+        event.put(CalendarContract.Events.ALL_DAY, 0);   // 0 for false, 1 for true
+        event.put(CalendarContract.Events.HAS_ALARM, 1); // 0 for false, 1 for true
+        String timeZone = TimeZone.getDefault().getID();
+        event.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone);
+        Uri baseUri;
+        baseUri = Uri.parse("content://com.android.calendar/events");
+        //getApplicationContext();
+        getApplicationContext().getContentResolver().insert(baseUri, event);
 
     }
     public void onDestroy(){

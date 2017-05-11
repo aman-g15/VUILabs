@@ -21,15 +21,18 @@ package ai.api.sample;
  *
  ***********************************************************************************************************************/
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.provider.CalendarContract;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,9 +42,14 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
@@ -52,13 +60,14 @@ import ai.api.model.AIResponse;
 import ai.api.model.Metadata;
 import ai.api.model.Result;
 import ai.api.model.Status;
+import ai.api.sample.model.CalendarBuilderObject;
 import ai.api.ui.AIButton;
 
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class MainActivity extends BaseActivity implements AIButton.AIButtonListener{
+public class MainActivity extends BaseActivity implements AIButton.AIButtonListener {
 
     public static final String TAG = MainActivity.class.getName();
 
@@ -89,7 +98,7 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
         config.setRecognizerCancelSound(getResources().openRawResourceFd(R.raw.test_cancel));
         aiButton.initialize(config);
         aiButton.setResultsListener(this);
-        audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         animImageView = (ImageView) findViewById(R.id.imageView);
         animImageView.setBackgroundResource(R.drawable.molly_anim);
         animImageView.post(new Runnable() {
@@ -101,7 +110,7 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
             }
         });
         TTS.init(getApplicationContext());
-       // TTS.speak("Hi! I am Molly, your personal assistant for real estate practice. How can I help you?");
+        // TTS.speak("Hi! I am Molly, your personal assistant for real estate practice. How can I help you?");
 
     }
 
@@ -153,6 +162,7 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
         final Intent intent = new Intent(this, cls);
         startActivity(intent);
     }
+
     @Override
     public void onCancelled() {
         runOnUiThread(new Runnable() {
@@ -163,6 +173,7 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
             }
         });
     }
+
     @Override
     public void onError(final AIError error) {
         runOnUiThread(new Runnable() {
@@ -180,55 +191,109 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
             @Override
             public void run() {
 
-                    Log.d(TAG, "onResult");
+                Log.d(TAG, "onResult");
 
-                    //resultTextView.setText(gson.toJson(response.getResult()));
+                //resultTextView.setText(gson.toJson(response.getResult()));
 
-                    Log.i(TAG, "Received success response");
+                Log.i(TAG, "Received success response");
 
-                    // this is example how to get different parts of result object
-                    final Status status = response.getStatus();
-                    Log.i(TAG, "Status code: " + status.getCode());
-                    Log.i(TAG, "Status type: " + status.getErrorType());
+                // this is example how to get different parts of result object
+                final Status status = response.getStatus();
+                Log.i(TAG, "Status code: " + status.getCode());
+                Log.i(TAG, "Status type: " + status.getErrorType());
 
-                    final Result result = response.getResult();
-                    Log.i(TAG, "Resolved query: " + result.getResolvedQuery());
-                    //resultTextView.setBackgroundResource(R.drawable.background_border);
-                    //resultTextView.setText("You said: " + result.getResolvedQuery());
+                final Result result = response.getResult();
+                Log.i(TAG, "Resolved query: " + result.getResolvedQuery());
 
-                    Log.i(TAG, "Action: " + result.getAction());
-                    final String speech = result.getFulfillment().getSpeech();
-                    Log.i(TAG, "Speech: " + speech);
-                    TTS.speak(speech,aiButton);
-                if(speech.contains("creating reminder")){
+                //resultTextView.setBackgroundResource(R.drawable.background_border);
+                //resultTextView.setText("You said: " + result.getResolvedQuery());
+
+                Log.i(TAG, "Action: " + result.getAction());
+                final String speech = result.getFulfillment().getSpeech();
+                Log.i(TAG, "Speech: " + speech);
+                TTS.speak(speech, aiButton);
+                if (speech.contains("remind") || speech.contains("schedule a meeting") || speech.contains("set up a meeting") || speech.contains("meeting") || speech.contains("appointment")) {
                     //createCalendarEvent();
-                    createCalendar();
+                    CalendarBuilderObject calendarObj = null;
+                    try {
+                        calendarObj=   buildCalendarEvent(result.getParameters());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    createCalendar(calendarObj);
+
                     //setAlarm();
                 }
-                    //aiButton.onClick();
-                    final Metadata metadata = result.getMetadata();
-                    if (metadata != null) {
-                        Log.i(TAG, "Intent id: " + metadata.getIntentId());
-                        Log.i(TAG, "Intent name: " + metadata.getIntentName());
-                    }
-
-                    final HashMap<String, JsonElement> params = result.getParameters();
-                    if (params != null && !params.isEmpty()) {
-                        Log.i(TAG, "Parameters: ");
-                        for (final Map.Entry<String, JsonElement> entry : params.entrySet()) {
-                            Log.i(TAG, String.format("%s: %s", entry.getKey(), entry.getValue().toString()));
-                        }
-                    }
-
-
+                //aiButton.onClick();
+                final Metadata metadata = result.getMetadata();
+                if (metadata != null) {
+                    Log.i(TAG, "Intent id: " + metadata.getIntentId());
+                    Log.i(TAG, "Intent name: " + metadata.getIntentName());
                 }
 
+                final HashMap<String, JsonElement> params = result.getParameters();
+                if (params != null && !params.isEmpty()) {
+                    Log.i(TAG, "Parameters: ");
+                    for (final Map.Entry<String, JsonElement> entry : params.entrySet()) {
+                        Log.i(TAG, String.format("%s: %s", entry.getKey(), entry.getValue().toString()));
+                    }
+                }
+
+
+            }
+
         });
-       // aiButton.onClick();
-       // startActivity(AIButtonSampleActivity.class);
+        // aiButton.onClick();
+        // startActivity(AIButtonSampleActivity.class);
 
     }
-    public synchronized void createCalendarEvent(){
+
+    public CalendarBuilderObject buildCalendarEvent(HashMap<String, JsonElement> inputMap) throws ParseException{
+        CalendarBuilderObject requestObj = new CalendarBuilderObject();
+        if(null == inputMap){
+
+        }else {
+            if(null != inputMap.get("task-title")) {
+                requestObj.setTaskTitle(inputMap.get("task-title").getAsString());
+            }else{
+                requestObj.setTaskTitle("");
+            }
+            String date=null;
+            if(null != inputMap.get("date")) {
+                date = inputMap.get("date").getAsString();
+                String[] dateArray = date.split("-");
+                requestObj.setYear(Long.parseLong(dateArray[0]));
+                requestObj.setMonth(Long.parseLong(dateArray[1]));
+                requestObj.setDay(Long.parseLong(dateArray[2]));
+
+            }else{
+                Calendar temp = Calendar.getInstance();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String tempDate = dateFormat.format(temp.getTime());
+                //Log.i(tempDate+" ",tempDate);
+                String[] dateArray = tempDate.split("-");
+                requestObj.setYear(Long.parseLong(dateArray[0]));
+                requestObj.setMonth(Long.parseLong(dateArray[1]));
+                requestObj.setDay(Long.parseLong(dateArray[2]));
+
+            }
+            if(null!=inputMap.get("time")) {
+                String time = inputMap.get("time").getAsString();
+                String [] timeArray = time.split(":");
+                requestObj.setHour(Long.parseLong(timeArray[0]));
+                requestObj.setMinute(Long.parseLong(timeArray[1]));
+            }else{
+                requestObj.setHour(8L);
+                requestObj.setMinute(00L);
+            }
+
+
+        }
+        return requestObj;
+    }
+
+    public synchronized void createCalendarEvent() {
 
         Calendar beginTime = Calendar.getInstance();
         beginTime.set(2017, 4, 6, 10, 15);
@@ -247,15 +312,16 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
 
     }
 
-    public synchronized void createCalendar(){
+    public synchronized void createCalendar(CalendarBuilderObject calendarObj) {
         Calendar startTimeMillis = Calendar.getInstance();
-        startTimeMillis.set(2017, 4, 10, 20, 15);
         Calendar endTimeMillis = Calendar.getInstance();
-        endTimeMillis.set(2017, 4, 10, 20, 30);
+        startTimeMillis.set(calendarObj.getYear().intValue(), calendarObj.getMonth().intValue()-1, calendarObj.getDay().intValue(), calendarObj.getHour().intValue(), calendarObj.getMinute().intValue());
+        endTimeMillis.set(calendarObj.getYear().intValue(), calendarObj.getMonth().intValue()-1, calendarObj.getDay().intValue(), calendarObj.getHour().intValue(), calendarObj.getMinute().intValue()+30);
         final ContentValues event = new ContentValues();
+        //event.put(CalendarContract.Reminders.DTSTART, startTimeMillis.getTimeInMillis());
         event.put(CalendarContract.Events.CALENDAR_ID, 1);
-        event.put(CalendarContract.Events.TITLE, "Reminder");
-        event.put(CalendarContract.Events.DESCRIPTION, "This is a reminder.");
+        event.put(CalendarContract.Events.TITLE, calendarObj.getTaskTitle());
+        event.put(CalendarContract.Events.DESCRIPTION, calendarObj.getTaskTodo());
         event.put(CalendarContract.Events.EVENT_LOCATION, "");
         event.put(CalendarContract.Events.DTSTART, startTimeMillis.getTimeInMillis());
         event.put(CalendarContract.Events.DTEND, endTimeMillis.getTimeInMillis());
@@ -263,10 +329,31 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
         event.put(CalendarContract.Events.HAS_ALARM, 1); // 0 for false, 1 for true
         String timeZone = TimeZone.getDefault().getID();
         event.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone);
+
         Uri baseUri;
         baseUri = Uri.parse("content://com.android.calendar/events");
         //getApplicationContext();
-        getApplicationContext().getContentResolver().insert(baseUri, event);
+        baseUri = getApplicationContext().getContentResolver().insert(baseUri, event);
+
+
+        long eventID = Long.parseLong(baseUri.getLastPathSegment());
+        ContentValues reminders = new ContentValues();
+        reminders.put(CalendarContract.Reminders.EVENT_ID, eventID);
+        reminders.put(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT);
+        reminders.put(CalendarContract.Reminders.MINUTES, 10);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Uri uri2 = getApplicationContext().getContentResolver().insert(CalendarContract.Reminders.CONTENT_URI, reminders);
+
 
     }
     public void onDestroy(){

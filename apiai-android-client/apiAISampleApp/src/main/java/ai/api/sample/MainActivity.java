@@ -138,7 +138,10 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
         if (id == R.id.action_settings) {
             startActivity(AISettingsActivity.class);
             return true;
-        }
+        }else if(id == R.id.textBased){
+        Intent i = new Intent(getBaseContext(), AITextSampleActivity.class);
+        startActivity(i);
+    }
         return super.onOptionsItemSelected(item);
     }
 
@@ -377,4 +380,5 @@ public class MainActivity extends BaseActivity implements AIButton.AIButtonListe
         i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
         startActivity(i);
     }
+
 }

@@ -25,7 +25,7 @@ public final class R {
 		public static final int icon_orange_color = 0x7f0c001e;
 		public static final int main_bg_color = 0x7f0c001f;
 		public static final int mic_button_halo = 0x7f0c002c;
-		public static final int mic_colors = 0x7f0c004c;
+		public static final int mic_colors = 0x7f0c004d;
 	}
 	public static final class dimen {
 		public static final int mic_button_halo_radius_max = 0x7f09004a;
@@ -34,16 +34,16 @@ public final class R {
 	}
 	public static final class drawable {
 		public static final int cube = 0x7f02004c;
-		public static final int mic_control = 0x7f02004f;
-		public static final int microphone_control = 0x7f020050;
-		public static final int speaker = 0x7f020063;
-		public static final int speaker_silent = 0x7f020064;
+		public static final int mic_control = 0x7f020053;
+		public static final int microphone_control = 0x7f020054;
+		public static final int speaker = 0x7f02006b;
+		public static final int speaker_silent = 0x7f02006c;
 	}
 	public static final class id {
 		public static final int micButton = 0x7f0d0054;
-		public static final int micContainer = 0x7f0d0070;
-		public static final int partialResultsTextView = 0x7f0d0072;
-		public static final int titleTextView = 0x7f0d0071;
+		public static final int micContainer = 0x7f0d0073;
+		public static final int partialResultsTextView = 0x7f0d0075;
+		public static final int titleTextView = 0x7f0d0074;
 	}
 	public static final class layout {
 		public static final int aidialog = 0x7f030021;
@@ -52,8 +52,8 @@ public final class R {
 		public static final int version_config = 0x7f060003;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f070015;
-		public static final int default_aidialog_title = 0x7f070017;
+		public static final int app_name = 0x7f070016;
+		public static final int default_aidialog_title = 0x7f070018;
 	}
 	public static final class style {
 		public static final int ApiAi = 0x7f0a008a;

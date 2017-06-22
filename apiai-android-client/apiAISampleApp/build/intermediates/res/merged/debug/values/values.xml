@@ -65,8 +65,9 @@
     <color name="primary_text_default_material_light">#de000000</color>
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
+    <color name="reqBackColor">#3CB371</color>
     <color name="reqTextView_color">#9B59B6</color>
-    <color name="resTextView_color">#F7F9F9</color>
+    <color name="resTextView_color">#9B59B6</color>
     <color name="ripple_material_dark">#33ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
@@ -224,6 +225,7 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_settings">Settings</string>
+    <string name="action_textBased">Text View</string>
     <string name="app_name">Molly</string>
     <string name="button_sample_text">Button sample</string>
     <string name="default_aidialog_title">Speak</string>
@@ -238,8 +240,9 @@
     <string name="title_activity_aibutton_sample">Molly</string>
     <string name="title_activity_aidialog_sample">AIDialogSample</string>
     <string name="title_activity_aiservice_sample">AIServiceSample</string>
-    <string name="title_activity_aitext_sample">AITextSample</string>
+    <string name="title_activity_aitext_sample">Molly</string>
     <string name="title_app_widget">Voice command</string>
+    <string name="type_your_message">Type your text here</string>
     <string name="use_bluetooth_headset">Use Bluetooth headset</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

@@ -137,6 +137,9 @@ public class AIButtonSampleActivity extends BaseActivity implements AIButton.AIB
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if(id == R.id.textBased){
+            Intent i = new Intent(getBaseContext(), AIDialogSampleActivity.class);
+            startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -1,8 +1,85 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<RelativeLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/linearLayout3"
+        android:orientation="vertical"
+        android:layout_height="450dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/requestLinearLayout"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/textViewRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+                android:layout_marginLeft="25dp"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <ImageView
+                android:id="@+id/imageViewMolly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"></ImageView>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/textViewResponse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+<LinearLayout
+
+android:layout_width="360dp"
+android:layout_height="50dp"
+    android:layout_alignParentBottom="true"
+
+    android:weightSum="1">
+
+    <EditText
+        android:id="@+id/textQuery"
+        android:layout_width="288dp"
+        android:layout_height="40dp"
+        android:background="@android:color/white"
+        android:hint="@string/type_your_message"
+        android:layout_weight="0.49" />
+
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/send_icon"/>
+
+</LinearLayout>
+</RelativeLayout>
+
+   <!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -11,31 +88,14 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <Spinner
-            android:id="@+id/selectLanguageSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></Spinner>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <CheckBox
-                android:id="@+id/eventsCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
 
-            <Spinner
-                android:id="@+id/selectEventSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></Spinner>
+
         </LinearLayout>
-
-        <EditText
-            android:id="@+id/textQuery"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@android:color/white" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -69,13 +129,12 @@
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <EditText
-                android:id="@+id/contextEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="add Context here"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/textQuery"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white" />
     </LinearLayout>
-</ScrollView>
+-->
